@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shraddha Paithankar — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #f5f0e8;
+      --bg2:      #ede6d6;
+      --bg3:      #e8dcc8;
+      --warm:     #c8a882;
+      --terra:    #a0785a;
+      --ink:      #2c2418;
+      --muted:    #8a7560;
+      --card:     #faf7f2;
+      --border:   #ddd4c0;
+      --white:    #fffef9;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--ink); overflow-x: hidden; font-weight: 300; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.3rem 5rem;
+      background: rgba(245,240,232,0.95);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 600; color: var(--ink);
+      text-decoration: none; letter-spacing: 0.02em;
+    }
+    .nav-links { display: flex; gap: 3rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--muted);
+      font-size: 0.78rem; font-weight: 400;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      transition: color 0.25s;
+    }
+    .nav-links a:hover { color: var(--terra); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 9rem 5rem 5rem; gap: 5rem;
+    }
+    .hero-text { animation: fadeUp 1s ease both; }
+
+    .hero-eyebrow {
+      display: flex; align-items: center; gap: 0.8rem;
+      margin-bottom: 2rem;
+    }
+    .hero-eyebrow-line { width: 32px; height: 1px; background: var(--terra); }
+    .hero-eyebrow span {
+      font-size: 0.72rem; font-weight: 400;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--terra);
+    }
+
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.2rem, 6vw, 5.5rem);
+      font-weight: 400; line-height: 1.0;
+      font-style: italic;
+      color: var(--terra); letter-spacing: -1px;
+      margin-bottom: 0.4rem;
+    }
+    .hero-name em { font-style: italic; color: var(--terra); font-weight: 400; }
+
+    .hero-role {
+      font-size: 0.88rem; color: var(--muted);
+      letter-spacing: 0.1em; margin-bottom: 2rem;
+      text-transform: uppercase; font-weight: 400;
+    }
+
+    .hero-desc {
+      font-size: 1rem; color: var(--muted);
+      line-height: 1.85; max-width: 460px;
+      margin-bottom: 2.8rem; font-weight: 300;
+      border-left: 2px solid var(--warm);
+      padding-left: 1.2rem;
+    }
+
+    .hero-cta { display: flex; gap: 1rem; }
+    .btn-fill {
+      background: var(--ink); color: var(--bg);
+      padding: 0.9rem 2.2rem; border-radius: 2px;
+      text-decoration: none; font-size: 0.8rem;
+      font-weight: 400; letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: background 0.25s, transform 0.2s;
+    }
+    .btn-fill:hover { background: var(--terra); transform: translateY(-2px); }
+    .btn-outline {
+      border: 1px solid var(--warm); color: var(--muted);
+      padding: 0.9rem 2.2rem; border-radius: 2px;
+      text-decoration: none; font-size: 0.8rem;
+      font-weight: 400; letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: all 0.25s;
+    }
+    .btn-outline:hover { border-color: var(--terra); color: var(--terra); transform: translateY(-2px); }
+
+    /* Hero card */
+    .hero-visual { animation: fadeUp 1s 0.2s ease both; }
+    .hero-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2.8rem;
+      box-shadow: 0 20px 60px rgba(44,36,24,0.08);
+    }
+    .hero-card-top {
+      display: flex; justify-content: space-between;
+      align-items: flex-start; margin-bottom: 2rem;
+      padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);
+    }
+    .card-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 600; color: var(--ink);
+    }
+    .card-badge {
+      font-size: 0.65rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--terra);
+      border: 1px solid var(--terra); padding: 0.25rem 0.6rem;
+      border-radius: 1px;
+    }
+    .stat-row {
+      display: flex; justify-content: space-between;
+      padding: 0.8rem 0; border-bottom: 1px solid var(--bg2);
+    }
+    .stat-row:last-child { border-bottom: none; }
+    .stat-label { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em; }
+    .stat-val { font-size: 0.82rem; color: var(--ink); font-weight: 400; text-align: right; }
+    .stat-val.hi { color: var(--terra); }
+
+    /* ── SHARED SECTION STYLES ── */
+    section { padding: 7rem 5rem; }
+    .sec-eyebrow {
+      display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.8rem;
+    }
+    .sec-eyebrow-line { width: 24px; height: 1px; background: var(--terra); }
+    .sec-eyebrow span {
+      font-size: 0.68rem; font-weight: 400;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--terra);
+    }
+    .sec-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 600; color: var(--ink);
+      letter-spacing: -0.5px; line-height: 1.15;
+      margin-bottom: 3.5rem;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--bg2); }
+    .about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 6rem; align-items: start; }
+    .about-text { font-size: 1rem; line-height: 1.9; color: var(--muted); }
+    .about-text p + p { margin-top: 1.3rem; }
+    .about-sidebar { display: flex; flex-direction: column; gap: 2rem; }
+    .sidebar-block { }
+    .sidebar-label {
+      font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--terra); margin-bottom: 0.6rem; font-weight: 400;
+    }
+    .sidebar-val { font-size: 0.88rem; color: var(--ink); line-height: 1.65; }
+    .sidebar-divider { height: 1px; background: var(--border); }
+
+    /* ── EXPERIENCE ── */
+    #experience { background: var(--bg); }
+    .exp-list { display: flex; flex-direction: column; gap: 1.5rem; }
+    .exp-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 3px; padding: 2.2rem 2.8rem;
+      transition: transform 0.25s, box-shadow 0.25s;
+      position: relative; overflow: hidden;
+    }
+    .exp-card::after {
+      content: ''; position: absolute;
+      left: 0; top: 0; bottom: 0; width: 3px;
+      background: var(--terra);
+      transform: scaleY(0); transform-origin: top;
+      transition: transform 0.3s;
+    }
+    .exp-card:hover::after { transform: scaleY(1); }
+    .exp-card:hover { transform: translateX(4px); box-shadow: 0 8px 30px rgba(44,36,24,0.07); }
+    .exp-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.2rem; flex-wrap: wrap; gap: 0.5rem; }
+    .exp-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem; font-weight: 600; color: var(--ink);
+    }
+    .exp-co { font-size: 0.8rem; color: var(--terra); letter-spacing: 0.06em; margin-top: 0.25rem; font-weight: 400; }
+    .exp-date { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.06em; white-space: nowrap; }
+    .exp-list-items { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+    .exp-list-items li {
+      font-size: 0.88rem; color: var(--muted); line-height: 1.75;
+      padding-left: 1.2rem; position: relative;
+    }
+    .exp-list-items li::before { content: '·'; position: absolute; left: 0; color: var(--terra); font-size: 1.2rem; line-height: 1.4; }
+
+    /* ── SKILLS ── */
+    #skills { background: var(--bg2); }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+    .skill-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 3px; padding: 1.8rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .skill-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(44,36,24,0.08); }
+    .skill-icon { font-size: 1.3rem; margin-bottom: 1rem; }
+    .skill-name { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); margin-bottom: 1rem; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .stag {
+      font-size: 0.68rem; padding: 0.2rem 0.55rem;
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 1px; color: var(--muted); font-weight: 400;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── PROJECTS ── */
+    #projects { background: var(--bg3); }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 1.5rem; }
+    .proj-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 3px; padding: 2.5rem;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .proj-card:hover { transform: translateY(-4px); box-shadow: 0 18px 45px rgba(44,36,24,0.1); }
+    .proj-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem; font-weight: 700;
+      color: var(--border); line-height: 1; margin-bottom: 1.2rem;
+    }
+    .proj-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem; font-weight: 600; color: var(--ink);
+      margin-bottom: 0.8rem; letter-spacing: -0.3px;
+    }
+    .proj-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.8; margin-bottom: 1.8rem; }
+    .proj-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.8rem; }
+    .ptag {
+      font-size: 0.68rem; padding: 0.25rem 0.65rem;
+      background: var(--bg2); color: var(--terra);
+      border: 1px solid var(--warm); border-radius: 1px;
+      font-weight: 400; letter-spacing: 0.06em;
+    }
+    .proj-link {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--terra); text-decoration: none; font-weight: 400;
+      transition: gap 0.2s;
+    }
+    .proj-link:hover { gap: 0.8rem; }
+
+    /* ── CERTS ── */
+    #certifications { background: var(--bg); }
+    .cert-list { display: flex; flex-direction: column; gap: 1rem; }
+    .cert-item {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 3px; padding: 1.5rem 2rem;
+      display: flex; align-items: center; gap: 1.5rem;
+      transition: transform 0.2s;
+    }
+    .cert-item:hover { transform: translateX(5px); }
+    .cert-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--terra); flex-shrink: 0; }
+    .cert-name { font-size: 0.9rem; color: var(--ink); font-weight: 400; }
+    .cert-org { font-size: 0.72rem; color: var(--muted); margin-top: 0.2rem; letter-spacing: 0.06em; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--ink); text-align: center; }
+    #contact .sec-eyebrow { justify-content: center; }
+    #contact .sec-eyebrow-line { background: var(--warm); }
+    #contact .sec-eyebrow span { color: var(--warm); }
+    #contact .sec-title { color: var(--bg); margin-bottom: 1rem; }
+    .contact-sub { font-size: 0.92rem; color: var(--muted); margin-bottom: 3rem; }
+    .contact-btns { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    .cbtn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.9rem 2rem; border-radius: 2px;
+      font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+      font-weight: 400; text-decoration: none; transition: transform 0.2s, background 0.2s;
+    }
+    .cbtn.fill { background: var(--terra); color: var(--white); }
+    .cbtn.fill:hover { background: var(--warm); transform: translateY(-2px); }
+    .cbtn.ghost { border: 1px solid #3a3028; color: var(--muted); }
+    .cbtn.ghost:hover { border-color: var(--warm); color: var(--warm); transform: translateY(-2px); }
+
+    footer { background: #1e180e; color: #4a3f30; text-align: center; padding: 1.5rem; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
+    .reveal { opacity:0; transform:translateY(22px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.5rem; }
+      #hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; }
+      .hero-visual { display: none; }
+      section { padding: 4.5rem 1.5rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-logo">Shraddha Paithankar</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#personal">Personal</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-text">
+      <div class="hero-eyebrow">
+        <div class="hero-eyebrow-line"></div>
+        <span>Open to Opportunities</span>
+      </div>
+      <h1 class="hero-name">Shraddha<br><em>Paithankar</em></h1>
+      <p class="hero-role">MS Computer Science &nbsp;·&nbsp; GPA 3.5 &nbsp;·&nbsp; Santa Clara, CA</p>
+      <p class="hero-desc">MS Computer Science student with 3 years of hands-on experience in software development and data analysis, from debugging production systems to building operational dashboards. Proficient in Python, Java, and SQL.</p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn-fill">View Projects</a>
+        <a href="#contact" class="btn-outline">Get in Touch</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="hero-card-top">
+          <div class="card-name">Shraddha Paithankar</div>
+          <div class="card-badge">Available</div>
+        </div>
+        <div class="stat-row"><span class="stat-label">Degree</span><span class="stat-val">MS Computer Science</span></div>
+        <div class="stat-row"><span class="stat-label">University</span><span class="stat-val">CSUSB</span></div>
+        <div class="stat-row"><span class="stat-label">GPA</span><span class="stat-val hi">3.5 / 4.0</span></div>
+        <div class="stat-row"><span class="stat-label">Experience</span><span class="stat-val">3+ Years</span></div>
+        <div class="stat-row"><span class="stat-label">Location</span><span class="stat-val">Santa Clara, CA</span></div>
+        <div class="stat-row"><span class="stat-label">Certifications</span><span class="stat-val hi">Oracle · Google</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="reveal">
+      <div class="sec-eyebrow"><div class="sec-eyebrow-line"></div><span>About Me</span></div>
+      <div class="sec-title">Building systems,<br>surfacing insights.</div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>I'm a graduate student at California State University San Bernardino pursuing my MS in Computer Science with a 3.5 GPA, building on 3 years of professional experience as a Software Engineer at 3i Infotech.</p>
+        <p>My work spans both software engineering and data analysis, from debugging production systems and resolving priority issues to building operational dashboards and automating reporting workflows. I've led cross-functional QA efforts and documented complex systems for knowledge transfer across teams.</p>
+        <p>Currently working as a Research Assistant, I analyze failure patterns in AI retrieval pipelines and present findings to faculty stakeholders, bridging technical depth with clear communication.</p>
+      </div>
+      <div class="about-sidebar reveal reveal-d1">
+        <div class="sidebar-block">
+          <div class="sidebar-label">Education</div>
+          <div class="sidebar-val">MS Computer Science · CSUSB · GPA 3.5<br/>BS Information Technology · RGCER</div>
+        </div>
+        <div class="sidebar-divider"></div>
+        <div class="sidebar-block">
+          <div class="sidebar-label">Coursework</div>
+          <div class="sidebar-val">Data Science · Database Management<br/>Big Data · AI · Machine Learning</div>
+        </div>
+        <div class="sidebar-divider"></div>
+        <div class="sidebar-block">
+          <div class="sidebar-label">Currently</div>
+          <div class="sidebar-val">Research Assistant · CSUSB<br/>Mar 2026 – Present</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="reveal">
+      <div class="sec-eyebrow"><div class="sec-eyebrow-line"></div><span>Experience</span></div>
+      <div class="sec-title">Where I've worked.</div>
+    </div>
+    <div class="exp-list reveal">
+      <div class="exp-card">
+        <div class="exp-top">
+          <div>
+            <div class="exp-title">Research Assistant</div>
+            <div class="exp-co">California State University San Bernardino</div>
+          </div>
+          <div class="exp-date">Mar 2026 — Present</div>
+        </div>
+        <ul class="exp-list-items">
+          <li>Collecting, cleaning, and analyzing structured datasets to investigate failure patterns in AI retrieval pipelines, identifying trends and performance gaps to improve model reliability.</li>
+          <li>Documenting research workflows, analytical procedures, and findings to ensure clear communication across the research team.</li>
+          <li>Presenting data-driven insights and status updates to faculty stakeholders, translating complex technical findings into actionable recommendations.</li>
+        </ul>
+      </div>
+      <div class="exp-card">
+        <div class="exp-top">
+          <div>
+            <div class="exp-title">Software Engineer</div>
+            <div class="exp-co">3i Infotech</div>
+          </div>
+          <div class="exp-date">Nov 2019 — Aug 2022</div>
+        </div>
+        <ul class="exp-list-items">
+          <li>Contributed to Application Development, Integration, Modernization, and Maintenance (ADMS) solutions, resolving priority-based issues across the development lifecycle to ensure system stability and client satisfaction.</li>
+          <li>Debugged and maintained application code across multiple modules, diagnosing root causes and implementing fixes in alignment with client requirements and release schedules.</li>
+          <li>Wrote and optimized SQL queries, stored procedures, and PL/SQL scripts to extract, transform, and analyze operational data, supporting performance monitoring and data-driven decision making.</li>
+          <li>Developed and maintained operational reports and dashboards tracking key system metrics, delivering performance summaries and release documentation to clients and management.</li>
+          <li>Led cross-functional quality efforts across unit, integration, E2E, and UAT testing phases; collaborated with engineers, analysts, and stakeholders to identify issues and improve process efficiency.</li>
+          <li>Participated in client meetings to gather requirements, communicate project status, and translate technical findings into actionable recommendations.</li>
+          <li>Conducted Knowledge Transfer (KT) sessions for new hires, walking them through system architecture, workflows, debugging procedures, and coding standards to accelerate onboarding and reduce ramp-up time.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="reveal">
+      <div class="sec-eyebrow"><div class="sec-eyebrow-line"></div><span>Skills</span></div>
+      <div class="sec-title">What I work with.</div>
+    </div>
+    <div class="skills-grid reveal">
+      <div class="skill-card">
+        <div class="skill-icon">📊</div>
+        <div class="skill-name">Data Analysis & BI</div>
+        <div class="skill-tags">
+          <span class="stag">SQL</span><span class="stag">Python</span><span class="stag">Pandas</span>
+          <span class="stag">Data Cleaning</span><span class="stag">Power BI</span><span class="stag">Reporting</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🗄️</div>
+        <div class="skill-name">Databases & Cloud</div>
+        <div class="skill-tags">
+          <span class="stag">MySQL</span><span class="stag">SQL Server</span>
+          <span class="stag">Oracle Cloud</span><span class="stag">Google Cloud</span><span class="stag">PL/SQL</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">⚙️</div>
+        <div class="skill-name">Automation</div>
+        <div class="skill-tags">
+          <span class="stag">CI/CD</span><span class="stag">Power Automate</span>
+          <span class="stag">SharePoint</span><span class="stag">Process Docs</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🛠️</div>
+        <div class="skill-name">Tools</div>
+        <div class="skill-tags">
+          <span class="stag">Git</span><span class="stag">Jira</span>
+          <span class="stag">SVN</span><span class="stag">Excel</span><span class="stag">SDLC</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🐍</div>
+        <div class="skill-name">Programming</div>
+        <div class="skill-tags">
+          <span class="stag">Python</span><span class="stag">Java</span>
+          <span class="stag">OOP</span><span class="stag">JDBC</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🔬</div>
+        <div class="skill-name">Testing & QA</div>
+        <div class="skill-tags">
+          <span class="stag">Unit Testing</span><span class="stag">Integration</span>
+          <span class="stag">E2E</span><span class="stag">UAT</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="reveal">
+      <div class="sec-eyebrow"><div class="sec-eyebrow-line"></div><span>Projects</span></div>
+      <div class="sec-title">Things I've built.</div>
+    </div>
+    <div class="projects-grid reveal">
+      <div class="proj-card">
+        <div class="proj-num">01</div>
+        <div class="proj-title">MoodReads</div>
+        <p class="proj-desc">A Goodreads-inspired CLI analytics app with automated data ingestion, cleaning, and trend reporting. Features modular OOP architecture that generates personalized insights on how mood affects reading experience.</p>
+        <div class="proj-tech">
+          <span class="ptag">Python</span><span class="ptag">Pandas</span>
+          <span class="ptag">OOP</span><span class="ptag">JSON</span>
+        </div>
+        <a href="https://github.com/shraddha-is-not-a-bug/MoodReads" target="_blank" class="proj-link">View on GitHub &rarr;</a>
+      </div>
+      <div class="proj-card">
+        <div class="proj-num">02</div>
+        <div class="proj-title">BookNest</div>
+        <p class="proj-desc">Operational data management system with real-time tracking, automated metrics, and multi-layer data validation. Built across the full SDLC covering requirements, development, testing, and technical documentation.</p>
+        <div class="proj-tech">
+          <span class="ptag">Java</span><span class="ptag">JDBC</span>
+          <span class="ptag">MySQL</span><span class="ptag">Swing GUI</span>
+        </div>
+        <a href="#" class="proj-link">View on GitHub &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications">
+    <div class="reveal">
+      <div class="sec-eyebrow"><div class="sec-eyebrow-line"></div><span>Certifications</span></div>
+      <div class="sec-title">Credentials.</div>
+    </div>
+    <div class="cert-list reveal">
+      <div class="cert-item">
+        <div class="cert-dot"></div>
+        <div>
+          <div class="cert-name">Oracle Cloud Infrastructure 2025 Certified Generative AI Professional</div>
+          <div class="cert-org">Oracle</div>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-dot"></div>
+        <div>
+          <div class="cert-name">Google Cloud Computing Foundations Certificate</div>
+          <div class="cert-org">Google</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERSONAL -->
+  <section id="personal" style="background: var(--bg2);">
+    <div class="reveal">
+      <div class="sec-eyebrow"><div class="sec-eyebrow-line"></div><span>Beyond the Code</span></div>
+      <div class="sec-title">The person<br>behind the work.</div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;" class="reveal">
+
+      <div style="background: var(--white); border: 1px solid var(--border); border-radius: 3px; padding: 2.2rem;">
+        <div style="font-size: 1.5rem; margin-bottom: 1rem;">📚</div>
+        <div style="font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); margin-bottom: 0.8rem; font-weight: 400;">On Reading</div>
+        <p style="font-size: 0.92rem; color: var(--muted); line-height: 1.8; font-weight: 300;">A dedicated reader across all genres, though nothing quite beats the slow creep of a good thriller or the satisfaction of a mystery finally clicking into place.</p>
+      </div>
+
+      <div style="background: var(--white); border: 1px solid var(--border); border-radius: 3px; padding: 2.2rem;">
+        <div style="font-size: 1.5rem; margin-bottom: 1rem;">⚙️</div>
+        <div style="font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); margin-bottom: 0.8rem; font-weight: 400;">On Engineering</div>
+        <p style="font-size: 0.92rem; color: var(--muted); line-height: 1.8; font-weight: 300;">In a world where everything is in constant flux, engineering is one of the few things that keeps moving forward. That consistency of progress is what drew me in and keeps me here.</p>
+      </div>
+
+      <div style="background: var(--white); border: 1px solid var(--border); border-radius: 3px; padding: 2.2rem;">
+        <div style="font-size: 1.5rem; margin-bottom: 1rem;">🔬</div>
+        <div style="font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); margin-bottom: 0.8rem; font-weight: 400;">Fun Fact</div>
+        <p style="font-size: 0.92rem; color: var(--muted); line-height: 1.8; font-weight: 300;">I once wanted to be a surgeon. Life had other plans and pointed me toward machines instead. The twist? Surgeons today work alongside robots and AI more than ever. Turns out I wasn't that far off after all.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="reveal">
+      <div class="sec-eyebrow"><div class="sec-eyebrow-line"></div><span>Contact</span></div>
+      <div class="sec-title">Let's connect.</div>
+      <p class="contact-sub">Open to data analyst, software engineer, and research roles.</p>
+      <div class="contact-btns">
+        <a href="/cdn-cgi/l/email-protection#6c1503191e2c09010d0500420f0301" class="cbtn fill">✉ Send an Email</a>
+        <a href="https://linkedin.com/in/shraddha-paithankar" target="_blank" class="cbtn ghost">LinkedIn</a>
+        <a href="https://github.com/shraddha-is-not-a-bug" target="_blank" class="cbtn ghost">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2025 Shraddha Paithankar</footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    const secs = document.querySelectorAll('section[id]');
+    const links = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+      let cur = '';
+      secs.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.getAttribute('id'); })
