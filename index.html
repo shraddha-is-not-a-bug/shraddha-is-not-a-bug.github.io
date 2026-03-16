@@ -49,10 +49,9 @@
 
     /* ── HERO ── */
     #hero {
-      min-height: 100vh;
       display: grid; grid-template-columns: 1fr 1fr;
       align-items: center;
-      padding: 9rem 5rem 5rem; gap: 5rem;
+      padding: 9rem 5rem 6rem; gap: 5rem;
     }
     .hero-text { animation: fadeUp 1s ease both; }
 
@@ -298,7 +297,7 @@
 
     /* ── ANIMATIONS ── */
     @keyframes fadeUp { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
-    .reveal { opacity:0; transform:translateY(22px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal { opacity:1; transform:translateY(0); }
     .reveal.visible { opacity:1; transform:translateY(0); }
     .reveal-d1 { transition-delay: 0.1s; }
     .reveal-d2 { transition-delay: 0.2s; }
