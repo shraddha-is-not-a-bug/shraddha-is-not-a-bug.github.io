@@ -407,10 +407,11 @@
           <div class="exp-date">Mar 2026 — Present</div>
         </div>
         <ul class="exp-list-items">
-          <li>Surveyed 13 research papers on agentic memory and RAG systems, identifying a novel research gap in conflict arbitration between knowledge sources.</li>
-          <li>Built a model evaluation sheet assessing availability, benchmarks, and accuracy across memory architectures to guide implementation decisions.</li>
-          <li>Ran replication experiments using free local models on HotpotQA and LOCOMO, achieving up to 60% exact accuracy across R2D2, ReAct, and MemGPT frameworks.</li>
-          <li>Contributing to a novel trust calibration system that decides when an AI agent should trust its memory vs retrieved documents to reduce hallucination.</li>
+          <li>Researching agentic memory and RAG hallucination, focusing on memory-vs-document arbitration when retrieved context conflicts with model memory.</li>
+          <li>Reviewed 13 related research papers to identify similar approaches, datasets, model choices, evaluation methods, and gaps in conflict arbitration. Compared HotpotQA and LoCoMo as open-source datasets for small-scale experimentation and recommended HotpotQA to the team based on task fit.</li>
+          <li>Tested small, fast, free local models using Qwen through Ollama to support cost-efficient experimentation; built and evaluated baseline replication experiments on HotpotQA (7,405 questions), achieving R2D2 60%, ReAct 50%, and MemGPT 40% exact match accuracy on 10-question subsets.</li>
+          <li>Built a baseline MLP calibration model on 100 conflict examples achieving 80% accuracy, then independently added text similarity as a 4th feature improving accuracy to 86.7%, a 13.7% gain over the naive baseline of 73%, validated through a full ablation study identifying document confidence score and text similarity as most critical features.</li>
+          <li>Assigned as Calibration Model Lead: implementing 5 baselines, scaling training to 500 conflict examples, and conducting evaluation and ablation studies for a planned conference paper submission.</li>
         </ul>
       </div>
       <div class="exp-card">
@@ -422,13 +423,11 @@
           <div class="exp-date">Nov 2019 — Aug 2022</div>
         </div>
         <ul class="exp-list-items">
-          <li>Contributed to Application Development, Integration, Modernization, and Maintenance (ADMS) solutions, resolving priority-based issues across the development lifecycle to ensure system stability and client satisfaction.</li>
-          <li>Debugged and maintained application code across multiple modules, diagnosing root causes and implementing fixes in alignment with client requirements and release schedules.</li>
-          <li>Wrote and optimized SQL queries, stored procedures, and PL/SQL scripts to extract, transform, and analyze operational data, supporting performance monitoring and data-driven decision making.</li>
-          <li>Developed and maintained operational reports and dashboards tracking key system metrics, delivering performance summaries and release documentation to clients and management.</li>
-          <li>Led cross-functional quality efforts across unit, integration, E2E, and UAT testing phases; collaborated with engineers, analysts, and stakeholders to identify issues and improve process efficiency.</li>
-          <li>Participated in client meetings to gather requirements, communicate project status, and translate technical findings into actionable recommendations.</li>
-          <li>Conducted Knowledge Transfer (KT) sessions for new hires, walking them through system architecture, workflows, debugging procedures, and coding standards to accelerate onboarding and reduce ramp-up time.</li>
+          <li>Delivered and supported production Java applications across 5 environments over 3 years, resolving 300+ defects across 156 Agile sprints and maintaining 150+ deployments with SLA compliance.</li>
+          <li>Automated 1 of 7 services using Selenium and Java, reducing manual testing effort by 80%.</li>
+          <li>Resolved a critical audit-blocking defect in a 13-year legacy codebase by tracing thousands of records and identifying the root cause within 5 hours.</li>
+          <li>Mentored 2 junior developers and grew into 1 of 2 retained senior engineers as the team scaled from 7 to 4.</li>
+          <li>Communicated technical findings, root-cause analysis, and workaround plans to non-technical stakeholders during production support and sprint delivery.</li>
         </ul>
       </div>
     </div>
@@ -507,6 +506,17 @@
     <div class="projects-grid reveal">
       <div class="proj-card">
         <div class="proj-num">01</div>
+        <div class="proj-title">RAG Document Q&amp;A System</div>
+        <p class="proj-desc">Built a RAG-based PDF question-answering system that allows users to upload documents and ask natural-language questions. The system performs PDF ingestion, text chunking, sentence-transformer embedding generation, FAISS vector search, top-k semantic retrieval, and Groq LLaMA3 answer generation through a Streamlit interface.</p>
+        <div class="proj-tech">
+          <span class="ptag">Python</span><span class="ptag">LangChain</span>
+          <span class="ptag">FAISS</span><span class="ptag">HuggingFace</span>
+          <span class="ptag">Groq LLaMA3</span><span class="ptag">Streamlit</span>
+        </div>
+        <a href="https://github.com/shraddha-is-not-a-bug/RAG-Document-QA" target="_blank" class="proj-link">View on GitHub &rarr;</a>
+      </div>
+      <div class="proj-card">
+        <div class="proj-num">02</div>
         <div class="proj-title">MoodReads</div>
         <p class="proj-desc">A Goodreads-inspired CLI analytics app that generates personalized insights on how mood affects reading experience. Extended with Hugging Face LLM inference to automatically detect reading mood from natural language input using DistilRoBERTa-based emotion classification.</p>
         <div class="proj-tech">
@@ -516,7 +526,7 @@
         <a href="https://github.com/shraddha-is-not-a-bug/MoodReads" target="_blank" class="proj-link">View on GitHub &rarr;</a>
       </div>
       <div class="proj-card">
-        <div class="proj-num">02</div>
+        <div class="proj-num">03</div>
         <div class="proj-title">BART Ridership Analysis</div>
         <p class="proj-desc">Distributed data analysis of 2.8M rows of Bay Area Rapid Transit ridership data using PySpark on Databricks. Identified peak commute hours, busiest stations, and top origin-destination routes across the Bay Area.</p>
         <div class="proj-tech">
@@ -526,7 +536,7 @@
         <a href="https://github.com/shraddha-is-not-a-bug/BART-Ridership-Analysis" target="_blank" class="proj-link">View on GitHub &rarr;</a>
       </div>
       <div class="proj-card">
-        <div class="proj-num">03</div>
+        <div class="proj-num">04</div>
         <div class="proj-title">BookNest</div>
         <p class="proj-desc">Operational data management system with real-time tracking, automated metrics, and multi-layer data validation. Built across the full SDLC covering requirements, development, testing, and technical documentation.</p>
         <div class="proj-tech">
@@ -631,6 +641,14 @@
         <div>
           <div class="cert-name">Responsible AI: Applying AI Principles with Google Cloud</div>
           <div class="cert-org">Google Cloud Skills Boost · Mar 2026</div>
+        </div>
+      </div>
+
+      <div class="cert-item">
+        <div class="cert-dot"></div>
+        <div>
+          <div class="cert-name">IBM: Introduction to Computer Vision and Image Processing</div>
+          <div class="cert-org">IBM · 2026</div>
         </div>
       </div>
 
